@@ -31,17 +31,18 @@ end
 -- Sapling ABM
 
 minetest.register_abm({
-	nodenames = {"default:sapling", "default:junglesapling",
-		"default:pine_sapling", "default:acacia_sapling"},
+	nodenames = {"game:sapling", "game:junglesapling",
+		"game:pine_sapling", "game:acacia_sapling"},
 	interval = 10,
 	chance = 50,
 	action = function(pos, node)
 		if not game.can_grow(pos) then
 			return
 		end
+		return
 
 		local mapgen = minetest.get_mapgen_params().mgname
-		if node.name == "default:sapling" then
+		if node.name == "game:sapling" then
 			minetest.log("action", "A sapling grows into a tree at "..
 				minetest.pos_to_string(pos))
 			if mapgen == "v6" then
@@ -49,7 +50,7 @@ minetest.register_abm({
 			else
 				game.grow_new_apple_tree(pos)
 			end
-		elseif node.name == "default:junglesapling" then
+		elseif node.name == "game:junglesapling" then
 			minetest.log("action", "A jungle sapling grows into a tree at "..
 				minetest.pos_to_string(pos))
 			if mapgen == "v6" then
@@ -57,7 +58,7 @@ minetest.register_abm({
 			else
 				game.grow_new_jungle_tree(pos)
 			end
-		elseif node.name == "default:pine_sapling" then
+		elseif node.name == "game:pine_sapling" then
 			minetest.log("action", "A pine sapling grows into a tree at "..
 				minetest.pos_to_string(pos))
 			if mapgen == "v6" then
@@ -65,7 +66,7 @@ minetest.register_abm({
 			else
 				game.grow_new_pine_tree(pos)
 			end
-		elseif node.name == "default:acacia_sapling" then
+		elseif node.name == "game:acacia_sapling" then
 			minetest.log("action", "An acacia sapling grows into a tree at "..
 				minetest.pos_to_string(pos))
 			game.grow_new_acacia_tree(pos)
@@ -78,148 +79,80 @@ minetest.register_abm({
 -- Tree generation
 --
 
--- Apple tree and jungle tree trunk and leaves function
 
-local function add_trunk_and_leaves(data, a, pos, tree_cid, leaves_cid,
-		height, size, iters, is_apple_tree)
-	local x, y, z = pos.x, pos.y, pos.z
-	local c_air = minetest.get_content_id("air")
-	local c_ignore = minetest.get_content_id("ignore")
-	local c_apple = minetest.get_content_id("default:apple")
 
-	-- Trunk
-	data[a:index(x, y, z)] = tree_cid -- Force-place lowest trunk node to replace sapling
-	for yy = y + 1, y + height - 1 do
-		local vi = a:index(x, yy, z)
-		local node_id = data[vi]
-		if node_id == c_air or node_id == c_ignore or node_id == leaves_cid then
-			data[vi] = tree_cid
-		end
-	end
+local air_node = minetest.get_content_id("air")
+local ignore_node = minetest.get_content_id("ignore")
+local tree_node = minetest.get_content_id("game:tree")
+local jtree_node = minetest.get_content_id("game:jungletree")
+local dleaf_node = minetest.get_content_id("game:leaves")
+local leaf_node = minetest.get_content_id("cg_decor:leaves")
+local jleaf_node = minetest.get_content_id("cg_decor:jungleleaves")
+local djleaf_node = minetest.get_content_id("game:jungleleaves")
+local apple_node = minetest.get_content_id("game:apple")
 
-	-- Force leaves near the trunk
-	for z_dist = -1, 1 do
-	for y_dist = -size, 1 do
-		local vi = a:index(x - 1, y + height + y_dist, z + z_dist)
-		for x_dist = -1, 1 do
-			if data[vi] == c_air or data[vi] == c_ignore then
-				if is_apple_tree and random(1, 8) == 1 then
-					data[vi] = c_apple
-				else
-					data[vi] = leaves_cid
-				end
-			end
-			vi = vi + 1
-		end
-	end
-	end
+function game.grow_tree(data, a, pos, is_apple_tree)
 
-	-- Randomly add leaves in 2x2x2 clusters.
-	for i = 1, iters do
-		local clust_x = x + random(-size, size - 1)
-		local clust_y = y + height + random(-size, 0)
-		local clust_z = z + random(-size, size - 1)
-
-		for xi = 0, 1 do
-		for yi = 0, 1 do
-		for zi = 0, 1 do
-			local vi = a:index(clust_x + xi, clust_y + yi, clust_z + zi)
-			if data[vi] == c_air or data[vi] == c_ignore then
-				if is_apple_tree and random(1, 8) == 1 then
-					data[vi] = c_apple
-				else
-					data[vi] = leaves_cid
-				end
-			end
-		end
-		end
-		end
-	end
+    local height = math.random(8, 14)
+    if is_apple_tree == true then height = math.random(5,6) end 
+    for tree_h = 0, height-1 do  
+        local area_t = a:index(pos.x, pos.y+tree_h, pos.z)  
+        if data[area_t] == air_node or data[area_t] == ignore_node then
+            data[area_t] = tree_node   
+        end
+    end 
+    for x_area = -3, 3 do
+    for y_area = -2, 3 do
+    for z_area = -3, 3 do
+        if math.random(1,30) < 23 and math.abs(x_area) + math.abs(z_area) < 5 
+        	and math.abs(x_area) + math.abs(y_area) < 5 and math.abs(z_area) + math.abs(y_area) < 5 then  
+            local area_l = a:index(pos.x+x_area, pos.y+height+y_area-1, pos.z+z_area)  
+            if data[area_l] == air_node or data[area_l] == ignore_node then    
+                if is_apple_tree and math.random(1, 50) <=  10 then  
+                    data[area_l] = apple_node  
+                else 
+                    data[area_l] = leaf_node 
+                end
+            end
+        end       
+    end
+    end
+    end
 end
 
-
--- Apple tree
-
-function game.grow_tree(pos, is_apple_tree, bad)
-	--[[
-		NOTE: Tree-placing code is currently duplicated in the engine
-		and in games that have saplings; both are deprecated but not
-		replaced yet
-	--]]
-	if bad then
-		error("Deprecated use of game.grow_tree")
-	end
-
-	local x, y, z = pos.x, pos.y, pos.z
-	local height = random(4, 5)
-	local c_tree = minetest.get_content_id("default:tree")
-	local c_leaves = minetest.get_content_id("default:leaves")
-
-	local vm = minetest.get_voxel_manip()
-	local minp, maxp = vm:read_from_map(
-		{x = pos.x - 2, y = pos.y, z = pos.z - 2},
-		{x = pos.x + 2, y = pos.y + height + 1, z = pos.z + 2}
-	)
-	local a = VoxelArea:new({MinEdge = minp, MaxEdge = maxp})
-	local data = vm:get_data()
-
-	add_trunk_and_leaves(data, a, pos, c_tree, c_leaves, height, 2, 8, is_apple_tree)
-
-	vm:set_data(data)
-	vm:write_to_map()
-	vm:update_map()
-end
-
-
--- Jungle tree
-
-function game.grow_jungle_tree(pos, bad)
-	--[[
-		NOTE: Jungletree-placing code is currently duplicated in the engine
-		and in games that have saplings; both are deprecated but not
-		replaced yet
-	--]]
-	if bad then
-		error("Deprecated use of game.grow_jungle_tree")
-	end
-
-	local x, y, z = pos.x, pos.y, pos.z
-	local height = random(8, 12)
-	local c_air = minetest.get_content_id("air")
-	local c_ignore = minetest.get_content_id("ignore")
-	local c_jungletree = minetest.get_content_id("default:jungletree")
-	local c_jungleleaves = minetest.get_content_id("default:jungleleaves")
-
-	local vm = minetest.get_voxel_manip()
-	local minp, maxp = vm:read_from_map(
-		{x = pos.x - 3, y = pos.y - 1, z = pos.z - 3},
-		{x = pos.x + 3, y = pos.y + height + 1, z = pos.z + 3}
-	)
-	local a = VoxelArea:new({MinEdge = minp, MaxEdge = maxp})
-	local data = vm:get_data()
-
-	add_trunk_and_leaves(data, a, pos, c_jungletree, c_jungleleaves, height, 3, 30, false)
-
-	-- Roots
-	for z_dist = -1, 1 do
-		local vi_1 = a:index(x - 1, y - 1, z + z_dist)
-		local vi_2 = a:index(x - 1, y, z + z_dist)
-		for x_dist = -1, 1 do
-			if random(1, 3) >= 2 then
-				if data[vi_1] == c_air or data[vi_1] == c_ignore then
-					data[vi_1] = c_jungletree
-				elseif data[vi_2] == c_air or data[vi_2] == c_ignore then
-					data[vi_2] = c_jungletree
-				end
-			end
-			vi_1 = vi_1 + 1
-			vi_2 = vi_2 + 1
-		end
-	end
-
-	vm:set_data(data)
-	vm:write_to_map()
-	vm:update_map()
+function game.grow_jungletree(data, a, pos)
+        
+    local height = math.random(11, 20)
+    for tree_h = 0, height-1 do  
+        local area_t = a:index(pos.x, pos.y+tree_h, pos.z)  
+        if data[area_t] == air_node or data[area_t] == ignore_node then    
+            data[area_t] = jtree_node    
+        end
+    end
+    for roots_x = -1, 1 do
+    for roots_z = -1, 1 do
+        if math.random(1, 3) >= 2 then 
+            if a:contains(pos.x+roots_x, pos.y-1, pos.z+roots_z) and data[a:index(pos.x+roots_x, pos.y-1, pos.z+roots_z)] == air_node then
+                data[a:index(pos.x+roots_x, pos.y-1, pos.z+roots_z)] = jtree_node
+            elseif a:contains(pos.x+roots_x, pos.y, pos.z+roots_z) and data[a:index(pos.x+roots_x, pos.y, pos.z+roots_z)] == air_node then
+                data[a:index(pos.x+roots_x, pos.y, pos.z+roots_z)] = jtree_node
+            end
+        end
+    end
+    end
+    for x_area = -5, 5 do
+    for y_area = -4, 4 do
+    for z_area = -5, 5 do
+        if math.random(1,30) < 23 and math.abs(x_area) + math.abs(z_area) < 8  
+        	and math.abs(x_area) + math.abs(y_area) < 8 and math.abs(z_area) + math.abs(y_area) < 8 then  
+            local area_l = a:index(pos.x+x_area, pos.y+height+y_area-1, pos.z+z_area)  
+            if data[area_l] == air_node or data[area_l] == ignore_node then   
+                data[area_l] = jleaf_node 
+            end  
+        end       
+    end
+    end
+    end
 end
 
 
@@ -245,11 +178,11 @@ function game.grow_pine_tree(pos)
 
 	local c_air = minetest.get_content_id("air")
 	local c_ignore = minetest.get_content_id("ignore")
-	local c_pine_tree = minetest.get_content_id("default:pine_tree")
-	local c_pine_needles  = minetest.get_content_id("default:pine_needles")
-	local c_snow = minetest.get_content_id("default:snow")
-	local c_snowblock = minetest.get_content_id("default:snowblock")
-	local c_dirtsnow = minetest.get_content_id("default:dirt_with_snow")
+	local c_pine_tree = minetest.get_content_id("game:pine_tree")
+	local c_pine_needles  = minetest.get_content_id("game:pine_needles")
+	local c_snow = minetest.get_content_id("game:snow")
+	local c_snowblock = minetest.get_content_id("game:snowblock")
+	local c_dirtsnow = minetest.get_content_id("game:dirt_with_snow")
 
 	local vm = minetest.get_voxel_manip()
 	local minp, maxp = vm:read_from_map(
@@ -362,40 +295,4 @@ function game.grow_pine_tree(pos)
 	vm:set_data(data)
 	vm:write_to_map()
 	vm:update_map()
-end
-
-
--- New apple tree
-
-function game.grow_new_apple_tree(pos)
-	--local path = minetest.get_modpath("default") .. "/schematics/apple_tree_from_sapling.mts"
-	--minetest.place_schematic({x = pos.x - 2, y = pos.y - 1, z = pos.z - 2},
-		--path, 0, nil, false)
-end
-
-
--- New jungle tree
-
-function game.grow_new_jungle_tree(pos)
-	---local path = minetest.get_modpath("default") .. "/schematics/jungle_tree_from_sapling.mts"
-	---minetest.place_schematic({x = pos.x - 2, y = pos.y - 1, z = pos.z - 2},
-		---path, 0, nil, false)
-end
-
-
--- New pine tree
-
-function game.grow_new_pine_tree(pos)
-	---local path = minetest.get_modpath("default") .. "/schematics/pine_tree_from_sapling.mts"
-	---minetest.place_schematic({x = pos.x - 2, y = pos.y - 1, z = pos.z - 2},
-		---path, 0, nil, false)
-end
-
-
--- New acacia tree
-
-function game.grow_new_acacia_tree(pos)
-	---local path = minetest.get_modpath("default") .. "/schematics/acacia_tree_from_sapling.mts"
-	---minetest.place_schematic({x = pos.x - 4, y = pos.y - 1, z = pos.z - 4},
-		---path, random, nil, false)
 end
