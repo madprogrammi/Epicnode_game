@@ -1,4 +1,10 @@
--- mods/default/craftitems.lua
+--------------------------------------------------------------------------------------------
+------------------------------- EpicNode Game ver: 0.1 :D ----------------------------------
+--------------------------------------------------------------------------------------------
+--Mod by Pinkysnowman                                                                     --
+--(c)2015                                                                                 --
+--------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------
 
 minetest.register_craftitem("default:stick", {
 	description = "Stick",
@@ -20,14 +26,14 @@ local function book_on_use(itemstack, user, pointed_thing)
 	end
 	local formspec
 	if owner == player_name then
-		formspec = "size[8,8]"..default.gui_bg..
+		formspec = "size[8,8]"..game.gui_bg..
 			"field[0.5,1;7.5,0;title;Title:;"..
 				minetest.formspec_escape(title).."]"..
 			"textarea[0.5,1.5;7.5,7;text;Contents:;"..
 				minetest.formspec_escape(text).."]"..
 			"button_exit[2.5,7.5;3,1;save;Save]"
 	else
-		formspec = "size[8,8]"..default.gui_bg..
+		formspec = "size[8,8]"..game.gui_bg..
 			"label[0.5,0.5;by "..owner.."]"..
 			"label[0.5,0;"..minetest.formspec_escape(title).."]"..
 			"tableoptions[background=#00000000;highlight=#00000000;border=false]"..

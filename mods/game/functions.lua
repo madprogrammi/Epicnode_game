@@ -1,10 +1,16 @@
--- mods/default/functions.lua
+--------------------------------------------------------------------------------------------
+------------------------------- EpicNode Game ver: 0.1 :D ----------------------------------
+--------------------------------------------------------------------------------------------
+--Mod by Pinkysnowman                                                                     --
+--(c)2015                                                                                 --
+--------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------
 
 --
 -- Sounds
 --
 
-function default.node_sound_defaults(table)
+function game.node_sound_defaults(table)
 	table = table or {}
 	table.footstep = table.footstep or
 			{name = "", gain = 1.0}
@@ -15,17 +21,17 @@ function default.node_sound_defaults(table)
 	return table
 end
 
-function default.node_sound_stone_defaults(table)
+function game.node_sound_stone_defaults(table)
 	table = table or {}
 	table.footstep = table.footstep or
 			{name = "default_hard_footstep", gain = 0.5}
 	table.dug = table.dug or
 			{name = "default_hard_footstep", gain = 1.0}
-	default.node_sound_defaults(table)
+	game.node_sound_defaults(table)
 	return table
 end
 
-function default.node_sound_dirt_defaults(table)
+function game.node_sound_dirt_defaults(table)
 	table = table or {}
 	table.footstep = table.footstep or
 			{name = "default_dirt_footstep", gain = 1.0}
@@ -33,11 +39,11 @@ function default.node_sound_dirt_defaults(table)
 			{name = "default_dirt_footstep", gain = 1.5}
 	table.place = table.place or
 			{name = "default_place_node", gain = 1.0}
-	default.node_sound_defaults(table)
+	game.node_sound_defaults(table)
 	return table
 end
 
-function default.node_sound_sand_defaults(table)
+function game.node_sound_sand_defaults(table)
 	table = table or {}
 	table.footstep = table.footstep or
 			{name = "default_sand_footstep", gain = 0.2}
@@ -45,21 +51,21 @@ function default.node_sound_sand_defaults(table)
 			{name = "default_sand_footstep", gain = 0.4}
 	table.place = table.place or
 			{name = "default_place_node", gain = 1.0}
-	default.node_sound_defaults(table)
+	game.node_sound_defaults(table)
 	return table
 end
 
-function default.node_sound_wood_defaults(table)
+function game.node_sound_wood_defaults(table)
 	table = table or {}
 	table.footstep = table.footstep or
 			{name = "default_wood_footstep", gain = 0.5}
 	table.dug = table.dug or
 			{name = "default_wood_footstep", gain = 1.0}
-	default.node_sound_defaults(table)
+	game.node_sound_defaults(table)
 	return table
 end
 
-function default.node_sound_leaves_defaults(table)
+function game.node_sound_leaves_defaults(table)
 	table = table or {}
 	table.footstep = table.footstep or
 			{name = "default_grass_footstep", gain = 0.35}
@@ -69,17 +75,17 @@ function default.node_sound_leaves_defaults(table)
 			{name = "default_dig_crumbly", gain = 0.4}
 	table.place = table.place or
 			{name = "default_place_node", gain = 1.0}
-	default.node_sound_defaults(table)
+	game.node_sound_defaults(table)
 	return table
 end
 
-function default.node_sound_glass_defaults(table)
+function game.node_sound_glass_defaults(table)
 	table = table or {}
 	table.footstep = table.footstep or
 			{name = "default_glass_footstep", gain = 0.5}
 	table.dug = table.dug or
 			{name = "default_break_glass", gain = 1.0}
-	default.node_sound_defaults(table)
+	game.node_sound_defaults(table)
 	return table
 end
 
@@ -88,13 +94,13 @@ end
 -- Lavacooling
 --
 
-default.cool_lava_source = function(pos)
+game.cool_lava_source = function(pos)
 	minetest.set_node(pos, {name = "default:obsidian"})
 	minetest.sound_play("default_cool_lava",
 		{pos = pos, max_hear_distance = 16, gain = 0.25})
 end
 
-default.cool_lava_flowing = function(pos)
+game.cool_lava_flowing = function(pos)
 	minetest.set_node(pos, {name = "default:stone"})
 	minetest.sound_play("default_cool_lava",
 		{pos = pos, max_hear_distance = 16, gain = 0.25})
@@ -107,7 +113,7 @@ minetest.register_abm({
 	chance = 2,
 	catch_up = false,
 	action = function(...)
-		default.cool_lava_flowing(...)
+		game.cool_lava_flowing(...)
 	end,
 })
 
@@ -118,7 +124,7 @@ minetest.register_abm({
 	chance = 2,
 	catch_up = false,
 	action = function(...)
-		default.cool_lava_source(...)
+		game.cool_lava_source(...)
 	end,
 })
 
@@ -129,7 +135,7 @@ minetest.register_abm({
 
 -- wrapping the functions in abm action is necessary to make overriding them possible
 
-function default.grow_cactus(pos, node)
+function game.grow_cactus(pos, node)
 	if node.param2 >= 4 then
 		return
 	end
@@ -151,7 +157,7 @@ function default.grow_cactus(pos, node)
 	return true
 end
 
-function default.grow_papyrus(pos, node)
+function game.grow_papyrus(pos, node)
 	pos.y = pos.y - 1
 	local name = minetest.get_node(pos).name
 	if name ~= "default:dirt_with_grass" and name ~= "default:dirt" then
@@ -180,7 +186,7 @@ minetest.register_abm({
 	interval = 50,
 	chance = 20,
 	action = function(...)
-		default.grow_cactus(...)
+		game.grow_cactus(...)
 	end
 })
 
@@ -190,7 +196,7 @@ minetest.register_abm({
 	interval = 50,
 	chance = 20,
 	action = function(...)
-		default.grow_papyrus(...)
+		game.grow_papyrus(...)
 	end
 })
 
@@ -199,7 +205,7 @@ minetest.register_abm({
 -- dig upwards
 --
 
-function default.dig_up(pos, node, digger)
+function game.dig_up(pos, node, digger)
 	if digger == nil then return end
 	local np = {x = pos.x, y = pos.y + 1, z = pos.z}
 	local nn = minetest.get_node(np)
@@ -213,18 +219,18 @@ end
 -- Leafdecay
 --
 
-default.leafdecay_trunk_cache = {}
-default.leafdecay_enable_cache = true
+game.leafdecay_trunk_cache = {}
+game.leafdecay_enable_cache = true
 -- Spread the load of finding trunks
-default.leafdecay_trunk_find_allow_accumulator = 0
+game.leafdecay_trunk_find_allow_accumulator = 0
 
 minetest.register_globalstep(function(dtime)
 	local finds_per_second = 5000
-	default.leafdecay_trunk_find_allow_accumulator =
+	game.leafdecay_trunk_find_allow_accumulator =
 			math.floor(dtime * finds_per_second)
 end)
 
-default.after_place_leaves = function(pos, placer, itemstack, pointed_thing)
+game.after_place_leaves = function(pos, placer, itemstack, pointed_thing)
 	local node = minetest.get_node(pos)
 	node.param2 = 1
 	minetest.set_node(pos, node)
@@ -251,9 +257,9 @@ minetest.register_abm({
 			return
 		end
 		local p0_hash = nil
-		if default.leafdecay_enable_cache then
+		if game.leafdecay_enable_cache then
 			p0_hash = minetest.hash_node_position(p0)
-			local trunkp = default.leafdecay_trunk_cache[p0_hash]
+			local trunkp = game.leafdecay_trunk_cache[p0_hash]
 			if trunkp then
 				local n = minetest.get_node(trunkp)
 				local reg = minetest.registered_nodes[n.name]
@@ -266,23 +272,23 @@ minetest.register_abm({
 				end
 				--print("cached trunk is invalid")
 				-- Cache is invalid
-				table.remove(default.leafdecay_trunk_cache, p0_hash)
+				table.remove(game.leafdecay_trunk_cache, p0_hash)
 			end
 		end
-		if default.leafdecay_trunk_find_allow_accumulator <= 0 then
+		if game.leafdecay_trunk_find_allow_accumulator <= 0 then
 			return
 		end
-		default.leafdecay_trunk_find_allow_accumulator =
-				default.leafdecay_trunk_find_allow_accumulator - 1
+		game.leafdecay_trunk_find_allow_accumulator =
+				game.leafdecay_trunk_find_allow_accumulator - 1
 		-- Assume ignore is a trunk, to make the thing
 		-- work at the border of the active area
 		local p1 = minetest.find_node_near(p0, d, {"ignore", "group:tree"})
 		if p1 then
 			do_preserve = true
-			if default.leafdecay_enable_cache then
+			if game.leafdecay_enable_cache then
 				--print("caching trunk")
 				-- Cache the trunk
-				default.leafdecay_trunk_cache[p0_hash] = p1
+				game.leafdecay_trunk_cache[p0_hash] = p1
 			end
 		end
 		if not do_preserve then

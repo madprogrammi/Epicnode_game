@@ -1,4 +1,10 @@
--- mods/default/tools.lua
+--------------------------------------------------------------------------------------------
+------------------------------- EpicNode Game ver: 0.1 :D ----------------------------------
+--------------------------------------------------------------------------------------------
+--Mod by Pinkysnowman                                                                     --
+--(c)2015                                                                                 --
+--------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------
 
 -- The hand
 minetest.register_item(":", {
@@ -21,7 +27,7 @@ minetest.register_item(":", {
 -- Picks
 --
 
-minetest.register_tool("default:pick_wood", {
+game.register("tool", "pick_wood", {
 	description = "Wooden Pickaxe",
 	inventory_image = "default_tool_woodpick.png",
 	tool_capabilities = {
@@ -33,7 +39,7 @@ minetest.register_tool("default:pick_wood", {
 		damage_groups = {fleshy=2},
 	},
 })
-minetest.register_tool("default:pick_stone", {
+game.register("tool", "pick_stone", {
 	description = "Stone Pickaxe",
 	inventory_image = "default_tool_stonepick.png",
 	tool_capabilities = {
@@ -45,7 +51,7 @@ minetest.register_tool("default:pick_stone", {
 		damage_groups = {fleshy=3},
 	},
 })
-minetest.register_tool("default:pick_steel", {
+game.register("tool", "pick_steel", {
 	description = "Steel Pickaxe",
 	inventory_image = "default_tool_steelpick.png",
 	tool_capabilities = {
@@ -57,7 +63,7 @@ minetest.register_tool("default:pick_steel", {
 		damage_groups = {fleshy=4},
 	},
 })
-minetest.register_tool("default:pick_bronze", {
+game.register("tool", "pick_bronze", {
 	description = "Bronze Pickaxe",
 	inventory_image = "default_tool_bronzepick.png",
 	tool_capabilities = {
@@ -69,7 +75,7 @@ minetest.register_tool("default:pick_bronze", {
 		damage_groups = {fleshy=4},
 	},
 })
-minetest.register_tool("default:pick_mese", {
+game.register("tool", "pick_mese", {
 	description = "Mese Pickaxe",
 	inventory_image = "default_tool_mesepick.png",
 	tool_capabilities = {
@@ -81,7 +87,7 @@ minetest.register_tool("default:pick_mese", {
 		damage_groups = {fleshy=5},
 	},
 })
-minetest.register_tool("default:pick_diamond", {
+game.register("tool", "pick_diamond", {
 	description = "Diamond Pickaxe",
 	inventory_image = "default_tool_diamondpick.png",
 	tool_capabilities = {
@@ -98,7 +104,7 @@ minetest.register_tool("default:pick_diamond", {
 -- Shovels
 --
 
-minetest.register_tool("default:shovel_wood", {
+game.register("tool", "shovel_wood", {
 	description = "Wooden Shovel",
 	inventory_image = "default_tool_woodshovel.png",
 	wield_image = "default_tool_woodshovel.png^[transformR90",
@@ -111,7 +117,7 @@ minetest.register_tool("default:shovel_wood", {
 		damage_groups = {fleshy=2},
 	},
 })
-minetest.register_tool("default:shovel_stone", {
+game.register("tool", "shovel_stone", {
 	description = "Stone Shovel",
 	inventory_image = "default_tool_stoneshovel.png",
 	wield_image = "default_tool_stoneshovel.png^[transformR90",
@@ -124,7 +130,7 @@ minetest.register_tool("default:shovel_stone", {
 		damage_groups = {fleshy=2},
 	},
 })
-minetest.register_tool("default:shovel_steel", {
+game.register("tool", "shovel_steel", {
 	description = "Steel Shovel",
 	inventory_image = "default_tool_steelshovel.png",
 	wield_image = "default_tool_steelshovel.png^[transformR90",
@@ -137,7 +143,7 @@ minetest.register_tool("default:shovel_steel", {
 		damage_groups = {fleshy=3},
 	},
 })
-minetest.register_tool("default:shovel_bronze", {
+game.register("tool", "shovel_bronze", {
 	description = "Bronze Shovel",
 	inventory_image = "default_tool_bronzeshovel.png",
 	wield_image = "default_tool_bronzeshovel.png^[transformR90",
@@ -150,7 +156,7 @@ minetest.register_tool("default:shovel_bronze", {
 		damage_groups = {fleshy=3},
 	},
 })
-minetest.register_tool("default:shovel_mese", {
+game.register("tool", "shovel_mese", {
 	description = "Mese Shovel",
 	inventory_image = "default_tool_meseshovel.png",
 	wield_image = "default_tool_meseshovel.png^[transformR90",
@@ -163,7 +169,7 @@ minetest.register_tool("default:shovel_mese", {
 		damage_groups = {fleshy=4},
 	},
 })
-minetest.register_tool("default:shovel_diamond", {
+game.register("tool", "shovel_diamond", {
 	description = "Diamond Shovel",
 	inventory_image = "default_tool_diamondshovel.png",
 	wield_image = "default_tool_diamondshovel.png^[transformR90",
@@ -181,7 +187,7 @@ minetest.register_tool("default:shovel_diamond", {
 -- Axes
 --
 
-minetest.register_tool("default:axe_wood", {
+game.register("tool", "axe_wood", {
 	description = "Wooden Axe",
 	inventory_image = "default_tool_woodaxe.png",
 	tool_capabilities = {
@@ -193,7 +199,7 @@ minetest.register_tool("default:axe_wood", {
 		damage_groups = {fleshy=2},
 	},
 })
-minetest.register_tool("default:axe_stone", {
+game.register("tool", "axe_stone", {
 	description = "Stone Axe",
 	inventory_image = "default_tool_stoneaxe.png",
 	tool_capabilities = {
@@ -205,7 +211,7 @@ minetest.register_tool("default:axe_stone", {
 		damage_groups = {fleshy=3},
 	},
 })
-minetest.register_tool("default:axe_steel", {
+game.register("tool", "axe_steel", {
 	description = "Steel Axe",
 	inventory_image = "default_tool_steelaxe.png",
 	tool_capabilities = {
@@ -217,7 +223,7 @@ minetest.register_tool("default:axe_steel", {
 		damage_groups = {fleshy=4},
 	},
 })
-minetest.register_tool("default:axe_bronze", {
+game.register("tool", "axe_bronze", {
 	description = "Bronze Axe",
 	inventory_image = "default_tool_bronzeaxe.png",
 	tool_capabilities = {
@@ -229,7 +235,7 @@ minetest.register_tool("default:axe_bronze", {
 		damage_groups = {fleshy=4},
 	},
 })
-minetest.register_tool("default:axe_mese", {
+game.register("tool", "axe_mese", {
 	description = "Mese Axe",
 	inventory_image = "default_tool_meseaxe.png",
 	tool_capabilities = {
@@ -241,7 +247,7 @@ minetest.register_tool("default:axe_mese", {
 		damage_groups = {fleshy=6},
 	},
 })
-minetest.register_tool("default:axe_diamond", {
+game.register("tool", "axe_diamond", {
 	description = "Diamond Axe",
 	inventory_image = "default_tool_diamondaxe.png",
 	tool_capabilities = {
@@ -258,7 +264,7 @@ minetest.register_tool("default:axe_diamond", {
 -- Swords
 --
 
-minetest.register_tool("default:sword_wood", {
+game.register("tool", "sword_wood", {
 	description = "Wooden Sword",
 	inventory_image = "default_tool_woodsword.png",
 	tool_capabilities = {
@@ -270,7 +276,7 @@ minetest.register_tool("default:sword_wood", {
 		damage_groups = {fleshy=2},
 	}
 })
-minetest.register_tool("default:sword_stone", {
+game.register("tool", "sword_stone", {
 	description = "Stone Sword",
 	inventory_image = "default_tool_stonesword.png",
 	tool_capabilities = {
@@ -282,7 +288,7 @@ minetest.register_tool("default:sword_stone", {
 		damage_groups = {fleshy=4},
 	}
 })
-minetest.register_tool("default:sword_steel", {
+game.register("tool", "sword_steel", {
 	description = "Steel Sword",
 	inventory_image = "default_tool_steelsword.png",
 	tool_capabilities = {
@@ -294,7 +300,7 @@ minetest.register_tool("default:sword_steel", {
 		damage_groups = {fleshy=6},
 	}
 })
-minetest.register_tool("default:sword_bronze", {
+game.register("tool", "sword_bronze", {
 	description = "Bronze Sword",
 	inventory_image = "default_tool_bronzesword.png",
 	tool_capabilities = {
@@ -306,7 +312,7 @@ minetest.register_tool("default:sword_bronze", {
 		damage_groups = {fleshy=6},
 	}
 })
-minetest.register_tool("default:sword_mese", {
+game.register("tool", "sword_mese", {
 	description = "Mese Sword",
 	inventory_image = "default_tool_mesesword.png",
 	tool_capabilities = {
@@ -318,7 +324,7 @@ minetest.register_tool("default:sword_mese", {
 		damage_groups = {fleshy=7},
 	}
 })
-minetest.register_tool("default:sword_diamond", {
+game.register("tool", "sword_diamond", {
 	description = "Diamond Sword",
 	inventory_image = "default_tool_diamondsword.png",
 	tool_capabilities = {

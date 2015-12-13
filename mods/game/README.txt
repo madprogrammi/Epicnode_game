@@ -1,9 +1,14 @@
-Minetest Game mod: default
-==========================
+--------------------------------------------------------------------------------------------
+------------------------------- EpicNode Game ver: 0.1 :D ----------------------------------
+--------------------------------------------------------------------------------------------
+--Mod by Pinkysnowman                                                                     --
+--(c)2015                                                                                 --
+--------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------
 
 License of source code:
 -----------------------
-Copyright (C) 2011-2012 celeron55, Perttu Ahola <celeron55@gmail.com>
+Copyright (C) 2015 Pinkysnowman
 
 This program is free software; you can redistribute it and/or modify
 it under the terms of the GNU Lesser General Public License as published by
@@ -20,7 +25,7 @@ http://creativecommons.org/licenses/by-sa/3.0/
 Authors of media files
 -----------------------
 Everything not listed in here:
-Copyright (C) 2010-2012 celeron55, Perttu Ahola <celeron55@gmail.com>
+Copyright (C) 2015 Pinkysnowman
 
 Cisoun's WTFPL texture pack:
   default_jungletree.png

@@ -1,26 +1,23 @@
-Minetest Game [minetest_game]
+EpicNode Game [EpicNode_game]
 =============================
-The main subgame for the Minetest engine
+The main subgame for the EpicNode engine
 ========================================
 
-To use this subgame with the Minetest engine, insert this repository as
-	/games/minetest_game
+To use this subgame with the EpicNode engine, insert this repository as
+	/games/EpicNode_game
 
-The Minetest engine can be found in:
-	https://github.com/minetest/minetest/
+The EpicNode engine can be found in:
+	https://github.com/EpicNode/EpicNode/
 
 Compatibility
 --------------
-The Minetest Game github master HEAD is generally compatible with the github
-master HEAD of the Minetest engine.
+The EpicNode Game github master HEAD is generally compatible with the github
+master HEAD of the EpicNode engine.
 
-Additionally, when the Minetest engine is tagged to be a certain version (eg.
-0.4.10), Minetest Game is tagged with the version too.
+Additionally, when the EpicNode engine is tagged to be a certain version (eg.
+0.4.10), EpicNode Game is tagged with the version too.
 
-When stable releases are made, Minetest Game is packaged and made available in
-	http://minetest.net/download
-and in case the repository has grown too much, it may be reset. In that sense,
-this is not a "real" git repository. (Package maintainers please note!)
+
 
 License of source code
 ----------------------

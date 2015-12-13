@@ -1,12 +1,16 @@
---
--- Grow trees from saplings
---
+--------------------------------------------------------------------------------------------
+------------------------------- EpicNode Game ver: 0.1 :D ----------------------------------
+--------------------------------------------------------------------------------------------
+--Mod by Pinkysnowman                                                                     --
+--(c)2015                                                                                 --
+--------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------
 
 -- 'Can grow' function
 
 local random = math.random
 
-function default.can_grow(pos)
+function game.can_grow(pos)
 	local node_under = minetest.get_node_or_nil({x = pos.x, y = pos.y - 1, z = pos.z})
 	if not node_under then
 		return false
@@ -32,7 +36,7 @@ minetest.register_abm({
 	interval = 10,
 	chance = 50,
 	action = function(pos, node)
-		if not default.can_grow(pos) then
+		if not game.can_grow(pos) then
 			return
 		end
 
@@ -41,30 +45,30 @@ minetest.register_abm({
 			minetest.log("action", "A sapling grows into a tree at "..
 				minetest.pos_to_string(pos))
 			if mapgen == "v6" then
-				default.grow_tree(pos, random(1, 4) == 1)
+				game.grow_tree(pos, random(1, 4) == 1)
 			else
-				default.grow_new_apple_tree(pos)
+				game.grow_new_apple_tree(pos)
 			end
 		elseif node.name == "default:junglesapling" then
 			minetest.log("action", "A jungle sapling grows into a tree at "..
 				minetest.pos_to_string(pos))
 			if mapgen == "v6" then
-				default.grow_jungle_tree(pos)
+				game.grow_jungle_tree(pos)
 			else
-				default.grow_new_jungle_tree(pos)
+				game.grow_new_jungle_tree(pos)
 			end
 		elseif node.name == "default:pine_sapling" then
 			minetest.log("action", "A pine sapling grows into a tree at "..
 				minetest.pos_to_string(pos))
 			if mapgen == "v6" then
-				default.grow_pine_tree(pos)
+				game.grow_pine_tree(pos)
 			else
-				default.grow_new_pine_tree(pos)
+				game.grow_new_pine_tree(pos)
 			end
 		elseif node.name == "default:acacia_sapling" then
 			minetest.log("action", "An acacia sapling grows into a tree at "..
 				minetest.pos_to_string(pos))
-			default.grow_new_acacia_tree(pos)
+			game.grow_new_acacia_tree(pos)
 		end
 	end
 })
@@ -136,14 +140,14 @@ end
 
 -- Apple tree
 
-function default.grow_tree(pos, is_apple_tree, bad)
+function game.grow_tree(pos, is_apple_tree, bad)
 	--[[
 		NOTE: Tree-placing code is currently duplicated in the engine
 		and in games that have saplings; both are deprecated but not
 		replaced yet
 	--]]
 	if bad then
-		error("Deprecated use of default.grow_tree")
+		error("Deprecated use of game.grow_tree")
 	end
 
 	local x, y, z = pos.x, pos.y, pos.z
@@ -169,14 +173,14 @@ end
 
 -- Jungle tree
 
-function default.grow_jungle_tree(pos, bad)
+function game.grow_jungle_tree(pos, bad)
 	--[[
 		NOTE: Jungletree-placing code is currently duplicated in the engine
 		and in games that have saplings; both are deprecated but not
 		replaced yet
 	--]]
 	if bad then
-		error("Deprecated use of default.grow_jungle_tree")
+		error("Deprecated use of game.grow_jungle_tree")
 	end
 
 	local x, y, z = pos.x, pos.y, pos.z
@@ -235,7 +239,7 @@ local function add_snow(data, vi, c_air, c_ignore, c_snow)
 	end
 end
 
-function default.grow_pine_tree(pos)
+function game.grow_pine_tree(pos)
 	local x, y, z = pos.x, pos.y, pos.z
 	local maxy = y + random(9, 13) -- Trunk top
 
@@ -363,35 +367,35 @@ end
 
 -- New apple tree
 
-function default.grow_new_apple_tree(pos)
-	local path = minetest.get_modpath("default") .. "/schematics/apple_tree_from_sapling.mts"
-	minetest.place_schematic({x = pos.x - 2, y = pos.y - 1, z = pos.z - 2},
-		path, 0, nil, false)
+function game.grow_new_apple_tree(pos)
+	--local path = minetest.get_modpath("default") .. "/schematics/apple_tree_from_sapling.mts"
+	--minetest.place_schematic({x = pos.x - 2, y = pos.y - 1, z = pos.z - 2},
+		--path, 0, nil, false)
 end
 
 
 -- New jungle tree
 
-function default.grow_new_jungle_tree(pos)
-	local path = minetest.get_modpath("default") .. "/schematics/jungle_tree_from_sapling.mts"
-	minetest.place_schematic({x = pos.x - 2, y = pos.y - 1, z = pos.z - 2},
-		path, 0, nil, false)
+function game.grow_new_jungle_tree(pos)
+	---local path = minetest.get_modpath("default") .. "/schematics/jungle_tree_from_sapling.mts"
+	---minetest.place_schematic({x = pos.x - 2, y = pos.y - 1, z = pos.z - 2},
+		---path, 0, nil, false)
 end
 
 
 -- New pine tree
 
-function default.grow_new_pine_tree(pos)
-	local path = minetest.get_modpath("default") .. "/schematics/pine_tree_from_sapling.mts"
-	minetest.place_schematic({x = pos.x - 2, y = pos.y - 1, z = pos.z - 2},
-		path, 0, nil, false)
+function game.grow_new_pine_tree(pos)
+	---local path = minetest.get_modpath("default") .. "/schematics/pine_tree_from_sapling.mts"
+	---minetest.place_schematic({x = pos.x - 2, y = pos.y - 1, z = pos.z - 2},
+		---path, 0, nil, false)
 end
 
 
 -- New acacia tree
 
-function default.grow_new_acacia_tree(pos)
-	local path = minetest.get_modpath("default") .. "/schematics/acacia_tree_from_sapling.mts"
-	minetest.place_schematic({x = pos.x - 4, y = pos.y - 1, z = pos.z - 4},
-		path, random, nil, false)
+function game.grow_new_acacia_tree(pos)
+	---local path = minetest.get_modpath("default") .. "/schematics/acacia_tree_from_sapling.mts"
+	---minetest.place_schematic({x = pos.x - 4, y = pos.y - 1, z = pos.z - 4},
+		---path, random, nil, false)
 end

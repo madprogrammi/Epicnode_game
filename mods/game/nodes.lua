@@ -1,173 +1,10 @@
--- mods/default/nodes.lua
-
-
---[[ Node name convention:
-
-Although many node names are in combined-word form, the required form for new
-node names is words separated by underscores. If both forms are used in written
-language (for example pinewood and pine wood) the underscore form should be used.
-
---]]
-
-
---[[ Index:
-
-Stone
------
-(1. Material 2. Cobble variant 3. Brick variant [4. Modified forms])
-
-game:stone
-game:cobble
-game:stonebrick
-game:mossycobble
-
-game:desert_stone
-game:desert_cobble
-game:desert_stonebrick
-
-game:sandstone
-game:sandstonebrick
-
-game:obsidian
-game:obsidianbrick
-
-Soft / Non-Stone
-----------------
-(1. Material [2. Modified forms])
-
-game:dirt
-game:dirt_with_grass
-game:dirt_with_grass_footsteps
-game:dirt_with_dry_grass
-game:dirt_with_snow
-
-game:sand
-game:desert_sand
-
-game:gravel
-
-game:clay
-
-game:snow
-game:snowblock
-
-game:ice
-
-Trees
------
-(1. Trunk 2. Fabricated trunk 3. Leaves 4. Sapling [5. Fruits])
-
-game:tree
-game:wood
-game:leaves
-game:sapling
-game:apple
-
-game:jungletree
-game:junglewood
-game:jungleleaves
-game:junglesapling
-
-game:pine_tree
-game:pine_wood
-game:pine_needles
-game:pine_sapling
-
-game:acacia_tree
-game:acacia_wood
-game:acacia_leaves
-game:acacia_sapling
-
-Ores
-----
-(1. In stone 2. Block)
-
-game:stone_with_coal
-game:coalblock
-
-game:stone_with_iron
-game:steelblock
-
-game:stone_with_copper
-game:copperblock
-game:bronzeblock
-
-game:stone_with_gold
-game:goldblock
-
-game:stone_with_mese
-game:mese
-
-game:stone_with_diamond
-game:diamondblock
-
-Plantlife (non-cubic)
----------------------
-game:cactus
-game:papyrus
-game:dry_shrub
-game:junglegrass
-
-game:grass_1
-game:grass_2
-game:grass_3
-game:grass_4
-game:grass_5
-
-game:dry_grass_1
-game:dry_grass_2
-game:dry_grass_3
-game:dry_grass_4
-game:dry_grass_5
-
-Liquids
--------
-(1. Source 2. Flowing)
-
-game:water_source
-game:water_flowing
-
-game:river_water_source
-game:river_water_flowing
-
-game:lava_source
-game:lava_flowing
-
-Tools / "Advanced" crafting / Non-"natural"
--------------------------------------------
-game:torch
-
-game:chest
-game:chest_locked
-
-game:bookshelf
-
-game:sign_wall
-
-game:ladder
-
-game:fence_wood
-
-game:glass
-game:obsidian_glass
-
-game:rail
-
-game:brick
-
-game:meselamp
-
-Misc
-----
-game:cloud
-game:nyancat
-game:nyancat_rainbow
-
---]]
-
---
--- Stone
---
+--------------------------------------------------------------------------------------------
+------------------------------- EpicNode Game ver: 0.1 :D ----------------------------------
+--------------------------------------------------------------------------------------------
+--Mod by Pinkysnowman                                                                     --
+--(c)2015                                                                                 --
+--------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------
 
 game.register("node", "stone", {
 	description = "Stone",
@@ -175,7 +12,7 @@ game.register("node", "stone", {
 	groups = {cracky = 3, stone = 1},
 	drop = 'game:cobble',
 	legacy_mineral = true,
-	sounds = default.node_sound_stone_defaults(),
+	sounds = game.node_sound_stone_defaults(),
 })
 
 game.register("node", "cobble", {
@@ -183,7 +20,7 @@ game.register("node", "cobble", {
 	tiles = {"default_cobble.png"},
 	is_ground_content = false,
 	groups = {cracky = 3, stone = 2},
-	sounds = default.node_sound_stone_defaults(),
+	sounds = game.node_sound_stone_defaults(),
 })
 
 game.register("node", "stonebrick", {
@@ -191,7 +28,7 @@ game.register("node", "stonebrick", {
 	tiles = {"default_stone_brick.png"},
 	is_ground_content = false,
 	groups = {cracky = 2, stone = 1},
-	sounds = default.node_sound_stone_defaults(),
+	sounds = game.node_sound_stone_defaults(),
 })
 
 game.register("node", "mossycobble", {
@@ -199,7 +36,7 @@ game.register("node", "mossycobble", {
 	tiles = {"default_mossycobble.png"},
 	is_ground_content = false,
 	groups = {cracky = 3, stone = 1},
-	sounds = default.node_sound_stone_defaults(),
+	sounds = game.node_sound_stone_defaults(),
 })
 
 
@@ -209,7 +46,7 @@ game.register("node", "desert_stone", {
 	groups = {cracky = 3, stone = 1},
 	drop = 'game:desert_cobble',
 	legacy_mineral = true,
-	sounds = default.node_sound_stone_defaults(),
+	sounds = game.node_sound_stone_defaults(),
 })
 
 game.register("node", "desert_cobble", {
@@ -217,7 +54,7 @@ game.register("node", "desert_cobble", {
 	tiles = {"default_desert_cobble.png"},
 	is_ground_content = false,
 	groups = {cracky = 3, stone = 2},
-	sounds = default.node_sound_stone_defaults(),
+	sounds = game.node_sound_stone_defaults(),
 })
 
 game.register("node", "desert_stonebrick", {
@@ -225,7 +62,7 @@ game.register("node", "desert_stonebrick", {
 	tiles = {"default_desert_stone_brick.png"},
 	is_ground_content = false,
 	groups = {cracky = 2, stone = 1},
-	sounds = default.node_sound_stone_defaults(),
+	sounds = game.node_sound_stone_defaults(),
 })
 
 
@@ -233,7 +70,7 @@ game.register("node", "sandstone", {
 	description = "Sandstone",
 	tiles = {"default_sandstone.png"},
 	groups = {crumbly = 2, cracky = 3},
-	sounds = default.node_sound_stone_defaults(),
+	sounds = game.node_sound_stone_defaults(),
 })
 
 game.register("node", "sandstonebrick", {
@@ -241,14 +78,14 @@ game.register("node", "sandstonebrick", {
 	tiles = {"default_sandstone_brick.png"},
 	is_ground_content = false,
 	groups = {cracky = 2},
-	sounds = default.node_sound_stone_defaults(),
+	sounds = game.node_sound_stone_defaults(),
 })
 
 
 game.register("node", "obsidian", {
 	description = "Obsidian",
 	tiles = {"default_obsidian.png"},
-	sounds = default.node_sound_stone_defaults(),
+	sounds = game.node_sound_stone_defaults(),
 	groups = {cracky = 1, level = 2},
 })
 
@@ -256,7 +93,7 @@ game.register("node", "obsidianbrick", {
 	description = "Obsidian Brick",
 	tiles = {"default_obsidian_brick.png"},
 	is_ground_content = false,
-	sounds = default.node_sound_stone_defaults(),
+	sounds = game.node_sound_stone_defaults(),
 	groups = {cracky = 1, level = 2},
 })
 
@@ -268,7 +105,7 @@ game.register("node", "dirt", {
 	description = "Dirt",
 	tiles = {"default_dirt.png"},
 	groups = {crumbly = 3, soil = 1},
-	sounds = default.node_sound_dirt_defaults(),
+	sounds = game.node_sound_dirt_defaults(),
 })
 
 game.register("dirt", "grass", {
@@ -282,7 +119,7 @@ game.register("node", "grass_footsteps", {
 			tileable_vertical = false}},
 	groups = {crumbly = 3, soil = 1, not_in_creative_inventory = 1},
 	drop = 'game:dirt',
-	sounds = default.node_sound_dirt_defaults({
+	sounds = game.node_sound_dirt_defaults({
 		footstep = {name = "default_grass_footstep", gain = 0.25},
 	}),
 })
@@ -300,14 +137,14 @@ game.register("node", "sand", {
 	description = "Sand",
 	tiles = {"default_sand.png"},
 	groups = {crumbly = 3, falling_node = 1, sand = 1},
-	sounds = default.node_sound_sand_defaults(),
+	sounds = game.node_sound_sand_defaults(),
 })
 
 game.register("node", "desert_sand", {
 	description = "Desert Sand",
 	tiles = {"default_desert_sand.png"},
 	groups = {crumbly = 3, falling_node = 1, sand = 1},
-	sounds = default.node_sound_sand_defaults(),
+	sounds = game.node_sound_sand_defaults(),
 })
 
 
@@ -315,7 +152,7 @@ game.register("node", "gravel", {
 	description = "Gravel",
 	tiles = {"default_gravel.png"},
 	groups = {crumbly = 2, falling_node = 1},
-	sounds = default.node_sound_dirt_defaults({
+	sounds = game.node_sound_dirt_defaults({
 		footstep = {name = "default_gravel_footstep", gain = 0.5},
 		dug = {name = "default_gravel_footstep", gain = 1.0},
 	}),
@@ -327,7 +164,7 @@ game.register("node", "clay", {
 	tiles = {"default_clay.png"},
 	groups = {crumbly = 3},
 	drop = 'game:clay_lump 4',
-	sounds = default.node_sound_dirt_defaults(),
+	sounds = game.node_sound_dirt_defaults(),
 })
 
 
@@ -346,7 +183,7 @@ game.register("node", "snow", {
 		},
 	},
 	groups = {crumbly = 3, falling_node = 1, puts_out_fire = 1},
-	sounds = default.node_sound_dirt_defaults({
+	sounds = game.node_sound_dirt_defaults({
 		footstep = {name = "default_snow_footstep", gain = 0.25},
 		dug = {name = "default_snow_footstep", gain = 0.75},
 	}),
@@ -363,7 +200,7 @@ game.register("node", "snowblock", {
 	description = "Snow Block",
 	tiles = {"default_snow.png"},
 	groups = {crumbly = 3, puts_out_fire = 1},
-	sounds = default.node_sound_dirt_defaults({
+	sounds = game.node_sound_dirt_defaults({
 		footstep = {name = "default_snow_footstep", gain = 0.25},
 		dug = {name = "default_snow_footstep", gain = 0.75},
 	}),
@@ -376,7 +213,7 @@ game.register("node", "ice", {
 	is_ground_content = false,
 	paramtype = "light",
 	groups = {cracky = 3, puts_out_fire = 1},
-	sounds = default.node_sound_glass_defaults(),
+	sounds = game.node_sound_glass_defaults(),
 })
 
 --
@@ -389,7 +226,7 @@ game.register("node", "tree", {
 	paramtype2 = "facedir",
 	is_ground_content = false,
 	groups = {tree = 1, choppy = 2, oddly_breakable_by_hand = 1, flammable = 2},
-	sounds = default.node_sound_wood_defaults(),
+	sounds = game.node_sound_wood_defaults(),
 
 	on_place = minetest.rotate_node
 })
@@ -399,7 +236,7 @@ game.register("node", "wood", {
 	tiles = {"default_wood.png"},
 	is_ground_content = false,
 	groups = {choppy = 2, oddly_breakable_by_hand = 2, flammable = 3, wood = 1},
-	sounds = default.node_sound_wood_defaults(),
+	sounds = game.node_sound_wood_defaults(),
 })
 
 game.register("node", "sapling", {
@@ -418,7 +255,7 @@ game.register("node", "sapling", {
 	},
 	groups = {snappy = 2, dig_immediate = 3, flammable = 2,
 		attached_node = 1, sapling = 1},
-	sounds = default.node_sound_leaves_defaults(),
+	sounds = game.node_sound_leaves_defaults(),
 })
 
 game.register("node", "leaves", {
@@ -446,9 +283,9 @@ game.register("node", "leaves", {
 			}
 		}
 	},
-	sounds = default.node_sound_leaves_defaults(),
+	sounds = game.node_sound_leaves_defaults(),
 
-	after_place_node = default.after_place_leaves,
+	after_place_node = game.after_place_leaves,
 })
 
 game.register("node", "apple", {
@@ -468,7 +305,7 @@ game.register("node", "apple", {
 	groups = {fleshy = 3, dig_immediate = 3, flammable = 2,
 		leafdecay = 3, leafdecay_drop = 1},
 	on_use = minetest.item_eat(2),
-	sounds = default.node_sound_leaves_defaults(),
+	sounds = game.node_sound_leaves_defaults(),
 
 	after_place_node = function(pos, placer, itemstack)
 		if placer:is_player() then
@@ -485,7 +322,7 @@ game.register("node", "jungletree", {
 	paramtype2 = "facedir",
 	is_ground_content = false,
 	groups = {tree = 1, choppy = 2, oddly_breakable_by_hand = 1, flammable = 2},
-	sounds = default.node_sound_wood_defaults(),
+	sounds = game.node_sound_wood_defaults(),
 
 	on_place = minetest.rotate_node
 })
@@ -495,7 +332,7 @@ game.register("node", "junglewood", {
 	tiles = {"default_junglewood.png"},
 	is_ground_content = false,
 	groups = {choppy = 2, oddly_breakable_by_hand = 2, flammable = 3, wood = 1},
-	sounds = default.node_sound_wood_defaults(),
+	sounds = game.node_sound_wood_defaults(),
 })
 
 game.register("node", "jungleleaves", {
@@ -515,9 +352,9 @@ game.register("node", "jungleleaves", {
 			{items = {'game:jungleleaves'}}
 		}
 	},
-	sounds = default.node_sound_leaves_defaults(),
+	sounds = game.node_sound_leaves_defaults(),
 
-	after_place_node = default.after_place_leaves,
+	after_place_node = game.after_place_leaves,
 })
 
 game.register("node", "junglesapling", {
@@ -536,7 +373,7 @@ game.register("node", "junglesapling", {
 	},
 	groups = {snappy = 2, dig_immediate = 3, flammable = 2,
 		attached_node = 1, sapling = 1},
-	sounds = default.node_sound_leaves_defaults(),
+	sounds = game.node_sound_leaves_defaults(),
 })
 
 
@@ -547,7 +384,7 @@ game.register("node", "pine_tree", {
 	paramtype2 = "facedir",
 	is_ground_content = false,
 	groups = {tree = 1, choppy = 2, oddly_breakable_by_hand = 1, flammable = 2},
-	sounds = default.node_sound_wood_defaults(),
+	sounds = game.node_sound_wood_defaults(),
 
 	on_place = minetest.rotate_node
 })
@@ -557,7 +394,7 @@ game.register("node", "pine_wood", {
 	tiles = {"default_pine_wood.png"},
 	is_ground_content = false,
 	groups = {choppy = 2, oddly_breakable_by_hand = 2, flammable = 3, wood = 1},
-	sounds = default.node_sound_wood_defaults(),
+	sounds = game.node_sound_wood_defaults(),
 })
 
 game.register("node", "pine_needles",{
@@ -576,9 +413,9 @@ game.register("node", "pine_needles",{
 			{items = {"game:pine_needles"}}
 		}
 	},
-	sounds = default.node_sound_leaves_defaults(),
+	sounds = game.node_sound_leaves_defaults(),
 
-	after_place_node = default.after_place_leaves,
+	after_place_node = game.after_place_leaves,
 })
 
 game.register("node", "pine_sapling", {
@@ -597,7 +434,7 @@ game.register("node", "pine_sapling", {
 	},
 	groups = {snappy = 2, dig_immediate = 3, flammable = 2,
 		attached_node = 1, sapling = 1},
-	sounds = default.node_sound_leaves_defaults(),
+	sounds = game.node_sound_leaves_defaults(),
 })
 
 
@@ -608,7 +445,7 @@ game.register("node", "acacia_tree", {
 	paramtype2 = "facedir",
 	is_ground_content = false,
 	groups = {tree = 1, choppy = 2, oddly_breakable_by_hand = 1, flammable = 2},
-	sounds = default.node_sound_wood_defaults(),
+	sounds = game.node_sound_wood_defaults(),
 
 	on_place = minetest.rotate_node
 })
@@ -618,7 +455,7 @@ game.register("node", "acacia_wood", {
 	tiles = {"default_acacia_wood.png"},
 	is_ground_content = false,
 	groups = {choppy = 2, oddly_breakable_by_hand = 2, flammable = 3, wood = 1},
-	sounds = default.node_sound_wood_defaults(),
+	sounds = game.node_sound_wood_defaults(),
 })
 
 game.register("node", "acacia_leaves", {
@@ -637,9 +474,9 @@ game.register("node", "acacia_leaves", {
 			{items = {"game:acacia_leaves"}}
 		}
 	},
-	sounds = default.node_sound_leaves_defaults(),
+	sounds = game.node_sound_leaves_defaults(),
 
-	after_place_node = default.after_place_leaves,
+	after_place_node = game.after_place_leaves,
 })
 
 game.register("node", "acacia_sapling", {
@@ -658,7 +495,7 @@ game.register("node", "acacia_sapling", {
 	},
 	groups = {snappy = 2, dig_immediate = 3, flammable = 2,
 		attached_node = 1, sapling = 1},
-	sounds = default.node_sound_leaves_defaults(),
+	sounds = game.node_sound_leaves_defaults(),
 })
 
 --
@@ -670,7 +507,7 @@ game.register("node", "stone_with_coal", {
 	tiles = {"default_stone.png^default_mineral_coal.png"},
 	groups = {cracky = 3},
 	drop = 'game:coal_lump',
-	sounds = default.node_sound_stone_defaults(),
+	sounds = game.node_sound_stone_defaults(),
 })
 
 game.register("node", "coalblock", {
@@ -678,7 +515,7 @@ game.register("node", "coalblock", {
 	tiles = {"default_coal_block.png"},
 	is_ground_content = false,
 	groups = {cracky = 3},
-	sounds = default.node_sound_stone_defaults(),
+	sounds = game.node_sound_stone_defaults(),
 })
 
 
@@ -687,7 +524,7 @@ game.register("node", "stone_with_iron", {
 	tiles = {"default_stone.png^default_mineral_iron.png"},
 	groups = {cracky = 2},
 	drop = 'game:iron_lump',
-	sounds = default.node_sound_stone_defaults(),
+	sounds = game.node_sound_stone_defaults(),
 })
 
 game.register("node", "steelblock", {
@@ -695,7 +532,7 @@ game.register("node", "steelblock", {
 	tiles = {"default_steel_block.png"},
 	is_ground_content = false,
 	groups = {cracky = 1, level = 2},
-	sounds = default.node_sound_stone_defaults(),
+	sounds = game.node_sound_stone_defaults(),
 })
 
 
@@ -704,7 +541,7 @@ game.register("node", "stone_with_copper", {
 	tiles = {"default_stone.png^default_mineral_copper.png"},
 	groups = {cracky = 2},
 	drop = 'game:copper_lump',
-	sounds = default.node_sound_stone_defaults(),
+	sounds = game.node_sound_stone_defaults(),
 })
 
 game.register("node", "copperblock", {
@@ -712,7 +549,7 @@ game.register("node", "copperblock", {
 	tiles = {"default_copper_block.png"},
 	is_ground_content = false,
 	groups = {cracky = 1, level = 2},
-	sounds = default.node_sound_stone_defaults(),
+	sounds = game.node_sound_stone_defaults(),
 })
 
 game.register("node", "bronzeblock", {
@@ -720,7 +557,7 @@ game.register("node", "bronzeblock", {
 	tiles = {"default_bronze_block.png"},
 	is_ground_content = false,
 	groups = {cracky = 1, level = 2},
-	sounds = default.node_sound_stone_defaults(),
+	sounds = game.node_sound_stone_defaults(),
 })
 
 
@@ -729,7 +566,7 @@ game.register("node", "stone_with_mese", {
 	tiles = {"default_stone.png^default_mineral_mese.png"},
 	groups = {cracky = 1},
 	drop = "game:mese_crystal",
-	sounds = default.node_sound_stone_defaults(),
+	sounds = game.node_sound_stone_defaults(),
 })
 
 game.register("node", "mese", {
@@ -737,7 +574,7 @@ game.register("node", "mese", {
 	tiles = {"default_mese_block.png"},
 	paramtype = "light",
 	groups = {cracky = 1, level = 2},
-	sounds = default.node_sound_stone_defaults(),
+	sounds = game.node_sound_stone_defaults(),
 	light_source = 3,
 })
 
@@ -747,7 +584,7 @@ game.register("node", "stone_with_gold", {
 	tiles = {"default_stone.png^default_mineral_gold.png"},
 	groups = {cracky = 2},
 	drop = "game:gold_lump",
-	sounds = default.node_sound_stone_defaults(),
+	sounds = game.node_sound_stone_defaults(),
 })
 
 game.register("node", "goldblock", {
@@ -755,7 +592,7 @@ game.register("node", "goldblock", {
 	tiles = {"default_gold_block.png"},
 	is_ground_content = false,
 	groups = {cracky = 1},
-	sounds = default.node_sound_stone_defaults(),
+	sounds = game.node_sound_stone_defaults(),
 })
 
 
@@ -764,7 +601,7 @@ game.register("node", "stone_with_diamond", {
 	tiles = {"default_stone.png^default_mineral_diamond.png"},
 	groups = {cracky = 1},
 	drop = "game:diamond",
-	sounds = default.node_sound_stone_defaults(),
+	sounds = game.node_sound_stone_defaults(),
 })
 
 game.register("node", "diamondblock", {
@@ -772,7 +609,7 @@ game.register("node", "diamondblock", {
 	tiles = {"default_diamond_block.png"},
 	is_ground_content = false,
 	groups = {cracky = 1, level = 3},
-	sounds = default.node_sound_stone_defaults(),
+	sounds = game.node_sound_stone_defaults(),
 })
 
 --
@@ -785,11 +622,11 @@ game.register("node", "cactus", {
 		"default_cactus_side.png"},
 	paramtype2 = "facedir",
 	groups = {snappy = 1, choppy = 3, flammable = 2},
-	sounds = default.node_sound_wood_defaults(),
+	sounds = game.node_sound_wood_defaults(),
 	on_place = minetest.rotate_node,
 
 	after_dig_node = function(pos, node, metadata, digger)
-		default.dig_up(pos, node, digger)
+		game.dig_up(pos, node, digger)
 	end,
 })
 
@@ -807,10 +644,10 @@ game.register("node", "papyrus", {
 		fixed = {-0.3, -0.5, -0.3, 0.3, 0.5, 0.3}
 	},
 	groups = {snappy = 3, flammable = 2},
-	sounds = default.node_sound_leaves_defaults(),
+	sounds = game.node_sound_leaves_defaults(),
 
 	after_dig_node = function(pos, node, metadata, digger)
-		default.dig_up(pos, node, digger)
+		game.dig_up(pos, node, digger)
 	end,
 })
 
@@ -827,7 +664,7 @@ game.register("node", "dry_shrub", {
 	walkable = false,
 	buildable_to = true,
 	groups = {snappy = 3, flammable = 3, attached_node = 1},
-	sounds = default.node_sound_leaves_defaults(),
+	sounds = game.node_sound_leaves_defaults(),
 	selection_box = {
 		type = "fixed",
 		fixed = {-0.5, -0.5, -0.5, 0.5, -5/16, 0.5},
@@ -847,7 +684,7 @@ game.register("node", "junglegrass", {
 	walkable = false,
 	buildable_to = true,
 	groups = {snappy = 3, flammable = 2, flora = 1, attached_node = 1},
-	sounds = default.node_sound_leaves_defaults(),
+	sounds = game.node_sound_leaves_defaults(),
 	selection_box = {
 		type = "fixed",
 		fixed = {-0.5, -0.5, -0.5, 0.5, -5/16, 0.5},
@@ -868,7 +705,7 @@ game.register("node", "grass_1", {
 	walkable = false,
 	buildable_to = true,
 	groups = {snappy = 3, flammable = 3, flora = 1, attached_node = 1},
-	sounds = default.node_sound_leaves_defaults(),
+	sounds = game.node_sound_leaves_defaults(),
 	selection_box = {
 		type = "fixed",
 		fixed = {-0.5, -0.5, -0.5, 0.5, -5/16, 0.5},
@@ -898,7 +735,7 @@ for i = 2, 5 do
 		drop = "game:grass_1",
 		groups = {snappy = 3, flammable = 3, flora = 1,
 			attached_node = 1, not_in_creative_inventory = 1},
-		sounds = default.node_sound_leaves_defaults(),
+		sounds = game.node_sound_leaves_defaults(),
 		selection_box = {
 			type = "fixed",
 			fixed = {-0.5, -0.5, -0.5, 0.5, -5/16, 0.5},
@@ -919,7 +756,7 @@ game.register("node", "dry_grass_1", {
 	walkable = false,
 	buildable_to = true,
 	groups = {snappy = 3, flammable = 3, flora = 1, attached_node = 1},
-	sounds = default.node_sound_leaves_defaults(),
+	sounds = game.node_sound_leaves_defaults(),
 	selection_box = {
 		type = "fixed",
 		fixed = {-0.5, -0.5, -0.5, 0.5, -5/16, 0.5},
@@ -949,7 +786,7 @@ for i = 2, 5 do
 		groups = {snappy = 3, flammable = 3, flora = 1,
 			attached_node = 1, not_in_creative_inventory=1},
 		drop = "game:dry_grass_1",
-		sounds = default.node_sound_leaves_defaults(),
+		sounds = game.node_sound_leaves_defaults(),
 		selection_box = {
 			type = "fixed",
 			fixed = {-0.5, -0.5, -0.5, 0.5, -5/16, 0.5},
@@ -1177,7 +1014,7 @@ game.register("node", "lava_source", {
 		},
 	},
 	paramtype = "light",
-	light_source = default.LIGHT_MAX - 1,
+	light_source = game.LIGHT_MAX - 1,
 	walkable = false,
 	pointable = false,
 	diggable = false,
@@ -1224,7 +1061,7 @@ game.register("node", "lava_flowing", {
 	},
 	paramtype = "light",
 	paramtype2 = "flowingliquid",
-	light_source = default.LIGHT_MAX - 1,
+	light_source = game.LIGHT_MAX - 1,
 	walkable = false,
 	pointable = false,
 	diggable = false,
@@ -1286,7 +1123,7 @@ game.register("node", "torch", {
 	sunlight_propagates = true,
 	is_ground_content = false,
 	walkable = false,
-	light_source = default.LIGHT_MAX - 1,
+	light_source = game.LIGHT_MAX - 1,
 	selection_box = {
 		type = "wallmounted",
 		wall_top = {-0.1, 0.5 - 0.6, -0.1, 0.1, 0.5, 0.1},
@@ -1295,35 +1132,35 @@ game.register("node", "torch", {
 	},
 	groups = {choppy = 2, dig_immediate = 3, flammable = 1, attached_node = 1},
 	legacy_wallmounted = true,
-	sounds = default.node_sound_defaults(),
+	sounds = game.node_sound_defaults(),
 })
 
 
 local chest_formspec =
 	"size[8,9]" ..
-	default.gui_bg ..
-	default.gui_bg_img ..
-	default.gui_slots ..
+	game.gui_bg ..
+	game.gui_bg_img ..
+	game.gui_slots ..
 	"list[current_name;main;0,0.3;8,4;]" ..
 	"list[current_player;main;0,4.85;8,1;]" ..
 	"list[current_player;main;0,6.08;8,3;8]" ..
 	"listring[current_name;main]" ..
 	"listring[current_player;main]" ..
-	default.get_hotbar_bg(0,4.85)
+	game.get_hotbar_bg(0,4.85)
 
 local function get_locked_chest_formspec(pos)
 	local spos = pos.x .. "," .. pos.y .. "," .. pos.z
 	local formspec =
 		"size[8,9]" ..
-		default.gui_bg ..
-		default.gui_bg_img ..
-		default.gui_slots ..
+		game.gui_bg ..
+		game.gui_bg_img ..
+		game.gui_slots ..
 		"list[nodemeta:" .. spos .. ";main;0,0.3;8,4;]" ..
 		"list[current_player;main;0,4.85;8,1;]" ..
 		"list[current_player;main;0,6.08;8,3;8]" ..
 		"listring[nodemeta:" .. spos .. ";main]" ..
 		"listring[current_player;main]" ..
-		default.get_hotbar_bg(0,4.85)
+		game.get_hotbar_bg(0,4.85)
  return formspec
 end
 
@@ -1342,7 +1179,7 @@ game.register("node", "chest", {
 	groups = {choppy = 2, oddly_breakable_by_hand = 2},
 	legacy_facedir_simple = true,
 	is_ground_content = false,
-	sounds = default.node_sound_wood_defaults(),
+	sounds = game.node_sound_wood_defaults(),
 
 	on_construct = function(pos)
 		local meta = minetest.get_meta(pos)
@@ -1379,7 +1216,7 @@ game.register("node", "chest_locked", {
 	groups = {choppy = 2, oddly_breakable_by_hand = 2},
 	legacy_facedir_simple = true,
 	is_ground_content = false,
-	sounds = default.node_sound_wood_defaults(),
+	sounds = game.node_sound_wood_defaults(),
 
 	after_place_node = function(pos, placer)
 		local meta = minetest.get_meta(pos)
@@ -1445,22 +1282,22 @@ game.register("node", "chest_locked", {
 
 local bookshelf_formspec =
 	"size[8,7;]" ..
-	default.gui_bg ..
-	default.gui_bg_img ..
-	default.gui_slots ..
+	game.gui_bg ..
+	game.gui_bg_img ..
+	game.gui_slots ..
 	"list[context;books;0,0.3;8,2;]" ..
 	"list[current_player;main;0,2.85;8,1;]" ..
 	"list[current_player;main;0,4.08;8,3;8]" ..
 	"listring[context;books]" ..
 	"listring[current_player;main]" ..
-	default.get_hotbar_bg(0,2.85)
+	game.get_hotbar_bg(0,2.85)
 
 game.register("node", "bookshelf", {
 	description = "Bookshelf",
 	tiles = {"default_wood.png", "default_wood.png", "default_bookshelf.png"},
 	is_ground_content = false,
 	groups = {choppy = 3, oddly_breakable_by_hand = 2, flammable = 3},
-	sounds = default.node_sound_wood_defaults(),
+	sounds = game.node_sound_wood_defaults(),
 
 	on_construct = function(pos)
 		local meta = minetest.get_meta(pos)
@@ -1539,7 +1376,7 @@ game.register("node", "sign_wall", {
 	},
 	groups = {choppy = 2, dig_immediate = 2, attached_node = 1},
 	legacy_wallmounted = true,
-	sounds = default.node_sound_defaults(),
+	sounds = game.node_sound_defaults(),
 
 	on_construct = function(pos)
 		--local n = minetest.get_node(pos)
@@ -1583,7 +1420,7 @@ game.register("node", "ladder", {
 	},
 	groups = {choppy = 2, oddly_breakable_by_hand = 3, flammable = 2},
 	legacy_wallmounted = true,
-	sounds = default.node_sound_wood_defaults(),
+	sounds = game.node_sound_wood_defaults(),
 })
 
 
@@ -1603,7 +1440,7 @@ game.register("node", "fence_wood", {
 		fixed = {-1/7, -1/2, -1/7, 1/7, 1/2, 1/7},
 	},
 	groups = {choppy = 2, oddly_breakable_by_hand = 2, flammable = 2},
-	sounds = default.node_sound_wood_defaults(),
+	sounds = game.node_sound_wood_defaults(),
 })
 
 
@@ -1616,7 +1453,7 @@ game.register("node", "glass", {
 	sunlight_propagates = true,
 	is_ground_content = false,
 	groups = {cracky = 3, oddly_breakable_by_hand = 3},
-	sounds = default.node_sound_glass_defaults(),
+	sounds = game.node_sound_glass_defaults(),
 })
 
 game.register("node", "obsidian_glass", {
@@ -1627,7 +1464,7 @@ game.register("node", "obsidian_glass", {
 	paramtype = "light",
 	is_ground_content = false,
 	sunlight_propagates = true,
-	sounds = default.node_sound_glass_defaults(),
+	sounds = game.node_sound_glass_defaults(),
 	groups = {cracky = 3, oddly_breakable_by_hand = 3},
 })
 
@@ -1658,7 +1495,7 @@ game.register("node", "brick", {
 	tiles = {"default_brick.png"},
 	is_ground_content = false,
 	groups = {cracky = 3},
-	sounds = default.node_sound_stone_defaults(),
+	sounds = game.node_sound_stone_defaults(),
 })
 
 
@@ -1670,8 +1507,8 @@ game.register("node", "meselamp", {
 	sunlight_propagates = true,
 	is_ground_content = false,
 	groups = {cracky = 3, oddly_breakable_by_hand = 3},
-	sounds = default.node_sound_glass_defaults(),
-	light_source = default.LIGHT_MAX,
+	sounds = game.node_sound_glass_defaults(),
+	light_source = game.LIGHT_MAX,
 })
 
 --
@@ -1682,7 +1519,7 @@ game.register("node", "cloud", {
 	description = "Cloud",
 	tiles = {"default_cloud.png"},
 	is_ground_content = false,
-	sounds = default.node_sound_defaults(),
+	sounds = game.node_sound_defaults(),
 	groups = {not_in_creative_inventory = 1},
 })
 
@@ -1694,7 +1531,7 @@ game.register("node", "nyancat", {
 	groups = {cracky = 2},
 	is_ground_content = false,
 	legacy_facedir_simple = true,
-	sounds = default.node_sound_defaults(),
+	sounds = game.node_sound_defaults(),
 })
 
 game.register("node", "nyancat_rainbow", {
@@ -1706,5 +1543,5 @@ game.register("node", "nyancat_rainbow", {
 	paramtype2 = "facedir",
 	groups = {cracky = 2},
 	is_ground_content = false,
-	sounds = default.node_sound_defaults(),
+	sounds = game.node_sound_defaults(),
 })

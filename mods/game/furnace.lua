@@ -1,3 +1,10 @@
+--------------------------------------------------------------------------------------------
+------------------------------- EpicNode Game ver: 0.1 :D ----------------------------------
+--------------------------------------------------------------------------------------------
+--Mod by Pinkysnowman                                                                     --
+--(c)2015                                                                                 --
+--------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------
 
 --
 -- Formspecs
@@ -6,9 +13,9 @@
 local function active_formspec(fuel_percent, item_percent)
 	local formspec = 
 		"size[8,8.5]"..
-		default.gui_bg..
-		default.gui_bg_img..
-		default.gui_slots..
+		game.gui_bg..
+		game.gui_bg_img..
+		game.gui_slots..
 		"list[current_name;src;2.75,0.5;1,1;]"..
 		"list[current_name;fuel;2.75,2.5;1,1;]"..
 		"image[2.75,1.5;1,1;default_furnace_fire_bg.png^[lowpart:"..
@@ -22,15 +29,15 @@ local function active_formspec(fuel_percent, item_percent)
 		"listring[current_player;main]"..
 		"listring[current_name;src]"..
 		"listring[current_player;main]"..
-		default.get_hotbar_bg(0, 4.25)
+		game.get_hotbar_bg(0, 4.25)
 	return formspec
 end
 
 local inactive_formspec =
 	"size[8,8.5]"..
-	default.gui_bg..
-	default.gui_bg_img..
-	default.gui_slots..
+	game.gui_bg..
+	game.gui_bg_img..
+	game.gui_slots..
 	"list[current_name;src;2.75,0.5;1,1;]"..
 	"list[current_name;fuel;2.75,2.5;1,1;]"..
 	"image[2.75,1.5;1,1;default_furnace_fire_bg.png]"..
@@ -42,7 +49,7 @@ local inactive_formspec =
 	"listring[current_player;main]"..
 	"listring[current_name;src]"..
 	"listring[current_player;main]"..
-	default.get_hotbar_bg(0, 4.25)
+	game.get_hotbar_bg(0, 4.25)
 
 --
 -- Node callback functions that are the same for active and inactive furnace
@@ -105,7 +112,7 @@ minetest.register_node("default:furnace", {
 	groups = {cracky=2},
 	legacy_facedir_simple = true,
 	is_ground_content = false,
-	sounds = default.node_sound_stone_defaults(),
+	sounds = game.node_sound_stone_defaults(),
 	
 	can_dig = can_dig,
 	
@@ -137,7 +144,7 @@ minetest.register_node("default:furnace_active", {
 	groups = {cracky=2, not_in_creative_inventory=1},
 	legacy_facedir_simple = true,
 	is_ground_content = false,
-	sounds = default.node_sound_stone_defaults(),
+	sounds = game.node_sound_stone_defaults(),
 	
 	can_dig = can_dig,
 	
